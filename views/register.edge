@@ -1,0 +1,60 @@
+@layout('layouts.app')
+
+@section('content')
+
+  <header class="masthead" style="background-image: url('/img/contact-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Register Your Account</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            @if(errors.length > 0)
+                <ul class="list-group">
+                    @each(error in errors)
+                        <li class="list-group-item text-danger">{{error}}</li>
+                    @endeach
+                </ul>
+            @endif
+            <form action="/users/register" method="POST" encType="multipart/form-data">
+                      <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Username</label>
+                        <input type="text" class="form-control" name="username" value="{{data.username || ''}}" placeholder="write your Username">
+                    </div>
+                    </div>
+
+                    <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email" value="{{data.email || ''}}" placeholder="email">
+                    </div>
+                    </div>
+
+                    <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" placeholder="password">
+                    </div>
+                    </div>
+
+               
+                    
+                <div class="form-group text-center mt-2" >  
+                    <button class="btn btn-primary">Register  </button>  
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@endsection
